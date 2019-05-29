@@ -4,28 +4,27 @@ function thePyramidOfKingDjoser(base, increment) {
     marble: 0,
     lapis: 0,
     gold: 0
-  }
-  let height = increment;
+  };
+  let floorCounter = 0;
   for (let i = 0; base > 0; i++) {
-    let totalBase = base * base;
-    let nextBase = totalBase - ((base - 2) * (base - 2));
-    if (base === 2 || base === 1){
-      material.gold += (base*base)
+    floorCounter++;
+    if (base === 2 || base === 1) {
+      material.gold += base * base * increment;
+      break;
     }
-    if (height % 5 === 0){
-      material.stone += (totalBase - nextBase);
-      material.lapis += nextBase;
-    } else if (height % 5 !== 0){
-      material.stone += (totalBase - nextBase);
-      material.marble += nextBase;
+    if (floorCounter % 5 === 0) {
+      material.stone += (base * base - (base * 4 - 4)) * increment;
+      material.lapis += (base * 4 - 4) * increment;
+    } else {
+      material.stone += (base * base - (base * 4 - 4)) * increment;
+      material.marble += (base * 4 - 4) * increment;
     }
-    height++;
     base -= 2;
   }
-  console.log(`Stone required: ${material.stone}`);
-  console.log(`Marble required: ${material.marble}`);
-  console.log(`Lapis required: ${material.lapis}`);
-  console.log(`Gold required: ${material.gold}`);
-  console.log(`Final pyramid height: ${Math.floor((increment * height)-1)}`);
+  console.log(`Stone required: ${Math.ceil(material.stone)}`);
+  console.log(`Marble required: ${Math.ceil(material.marble)}`);
+  console.log(`Lapis Lazuli required: ${Math.ceil(material.lapis)}`);
+  console.log(`Gold required: ${Math.ceil(material.gold)}`);
+  console.log(`Final pyramid height: ${Math.floor(floorCounter * increment)}`);
 }
 thePyramidOfKingDjoser(11, 0.75);
