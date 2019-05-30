@@ -1,0 +1,1 @@
+https://softuni.bg/trainings/resources/officedocument/34768/lab-technology-fundamental-september-2018/2056
