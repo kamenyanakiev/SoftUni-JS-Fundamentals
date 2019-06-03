@@ -1,18 +1,32 @@
 function chessBoard(number) {
-  let counter = 1;
-  console.log('<div class="chessboard">');
-  for (let i = 0; i < Number(number); i++) {
-    console.log('  <div>');
-    for (let j = 0; j < Number(number); j++) {
-      if (counter % 2 === 0){
-        console.log('    <span class="white"></span>'); 
-      } else {
-        console.log('    <span class="black"></span>'); 
-      }
+  let identation = 2;
+  printBaseStart();
+  for (let i = 1; i <= Number(number); i++) {
+    let counter = i;
+    console.log(`${" ".repeat(identation)}<div>`);
+    for (let j = 1; j <= Number(number); j++) {
+      printSpans(counter);
       counter++;
     }
-    console.log('  </div>');
+    console.log(`${" ".repeat(identation)}</div>`);
   }
-  console.log('</div>');
+  printBaseEnd();
+
+  function printBaseStart() {
+    console.log('<div class="chessboard">');
+  }
+
+  function printBaseEnd() {
+    console.log("</div>");
+  }
+
+  function printSpans(counter) {
+    let types = {
+      0: 'white',
+      1: 'black'
+    }
+    let result = `${" ".repeat(identation + identation)}<span class="${types[counter % 2]}"></span>`
+    console.log(result);
+  }
 }
 chessBoard(4);
