@@ -1,1 +1,1 @@
-https://softuni.bg/trainings/resources/officedocument/34978/javascript-lab-technology-fundamental-september-2018/2056
+https://softuni.bg/trainings/resources/officedocument/40404/lab-js-fundamentals-may-2019/2343
