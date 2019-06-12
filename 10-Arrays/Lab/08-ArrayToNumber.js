@@ -1,18 +1,14 @@
 function arrayToNumber(array) {
-  let newLenght = array.length - 1;
-  let newArray = new Array(newLenght);
-  if (array.length === 1){
-    console.log(array[0]);
-  }
+  let newArray = [];
   for (let i = 0; i < array.length - 1; i++) {
     newArray[i] = array[i] + array [i+1];
-    array[i] = newArray[i];
-  }
-  if (array.length > 2){
-    arrayToNumber(newArray);
-  }
+  } 
   if (newArray.length === 1){
     console.log(newArray[0]);
-  }
+  } else if (array.length === 1){
+    console.log(array[0]);
+  } else {
+    arrayToNumber(newArray);
+  } 
 }
-arrayToNumber([1, 5, 1, 2, 4]);
+arrayToNumber([5, 0, 4, 1, 2]);
