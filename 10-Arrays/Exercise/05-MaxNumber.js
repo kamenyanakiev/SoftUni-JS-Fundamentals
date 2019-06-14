@@ -1,15 +1,21 @@
 function maxNumber(array) {
   let newArray = [];
-  for (let i = 0; i < 3; i++) {
-    newArray.push(Math.max.apply(null, array));
-    for (let j = 0; j < array.length; j++) {
-      if (array[j] === newArray[i]){
-        array.pop(array[j]);
+  for (let i = 0; i < array.length; i++) {
+    let number = array[i];
+    let bigger = true;
+    for (let j = i; j < array.length; j++) {
+      if (number <= array[j + 1]) {
+        bigger = false;
       } else {
         continue;
       }
     }
+    if (bigger) {
+      newArray.push(number);
+    } else {
+      continue;
+    }
   }
   console.log(newArray.join(' '));
 }
-maxNumber([1, 2, 3, 4]);
+maxNumber([41, 41, 34, 20]);

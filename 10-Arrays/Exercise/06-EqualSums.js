@@ -9,14 +9,14 @@ function equalSums(array) {
     for (let k = i + 1; k < array.length; k++) {
       secondSum += array[k];
     }
-    if (firstSum === secondSum){
+    if (firstSum === secondSum) {
       console.log(i);
       equalChecker = false;
       break;
-    } 
+    }
   }
-  if (equalChecker){
+  if (equalChecker) {
     console.log('no');
   }
 }
-equalSums([1, 2, 3, 3])
+equalSums([1, 2, 3, 3]);
