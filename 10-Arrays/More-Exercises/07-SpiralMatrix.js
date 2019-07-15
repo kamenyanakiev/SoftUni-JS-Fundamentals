@@ -1,37 +1,43 @@
-function spiralMatrix(params) {
-    let width = Number(params[0]);
-    let height = Number(params[1]);
-    let start = 1;
+function spiralMatrix(a, b) {
+    let width = Number(a);
+    let height = Number(b);
+    let number = 1;
     let end = width * height;
-    let resultMatrix = new Array(width);
-    let left = width;
-    let down = height;
-    let up = height -1;
-    let right = width -1;
-    let currentLeft = 0;
-    let currentDown = 1;
-    let currentUp = 0;
-    let currentRight = 0
+    let resultMatrix = [];
+    let startCol = 0;
+    let endCol = width - 1;
+    let startRow = 0;
+    let endRow = height - 1;
     for (let i = 0; i < width; i++) {
         resultMatrix[i] = [];
         for (let j = 0; j < height; j++) {
             resultMatrix[i].push(0);
         }
     }
-    while (start <= end) {
-        for (let i = 0; i < width; i++) {
-            resultMatrix[currentLeft][i] = start;
-            start ++;
+    while (number <= end) {
+        for (let i = startCol; i <= endCol; i++) {
+            resultMatrix[startRow][i] = number;
+            number++;
         }
-        for (let j = currentDown; j < height; j++) {
-            resultMatrix[currentDown][j] = start;
-            start++;
-            
+        startRow++;
+        for (let j = startRow; j <= endRow; j++) {
+            resultMatrix[j][endCol] = number;
+            number++;
         }
-        
+        endCol--;
+        for (let k = endCol; k >= startCol; k--) {
+            resultMatrix[endRow][k] = number;
+            number++;
+        }
+        endRow--;
+        for (let l = endRow; l >= startRow; l--) {
+            resultMatrix[l][startCol] = number;
+            number++;
+        }
+        startCol++;
     }
-
-   
-    console.log(resultMatrix);
+    for (let i = 0; i < resultMatrix.length; i++) {
+        console.log(resultMatrix[i].join(' '));
+    }
 }
-spiralMatrix([5, 5]);
+spiralMatrix(5, 5);

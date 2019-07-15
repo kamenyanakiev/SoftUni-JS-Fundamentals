@@ -1,0 +1,19 @@
+* {
+  font-family: 'Quicksand', sans-serif;
+}
+h1 {
+  text-align: center;
+  color: blue;
+}
+.exercise {
+  display: inline-block;
+}
+.ListDescription {
+  color: darkviolet;
+}
+li {
+  border: 1px solid yellow;
+}
+.example {
+  text-align: center;
+}
