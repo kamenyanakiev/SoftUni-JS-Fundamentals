@@ -1,15 +1,20 @@
 function simpleCalculator(first, second, operation) {
+const sum = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
+let result = 0;
   let firstNum = Number(first);
   let secondNum = Number(second);
   if (operation === 'add') {
-    calculator = (a, b) => a + b;
+    result = sum(firstNum, secondNum);
   } else if (operation === 'subtract') {
-    calculator = (a, b) => a - b;
+    result = subtract(firstNum, secondNum);
   } else if (operation === 'multiply') {
-    calculator = (a, b) => a * b;
+    result = multiply(firstNum, secondNum);
   } else if (operation === 'divide'){
-    calculator = (a, b) => a / b;
+    result = divide(firstNum, secondNum);
   }
-  console.log(calculator(firstNum, secondNum));
+  console.log(result);
 }
 simpleCalculator(5, 10, 'multiply');
