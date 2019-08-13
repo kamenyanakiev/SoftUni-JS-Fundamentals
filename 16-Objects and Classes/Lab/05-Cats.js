@@ -1,8 +1,8 @@
 function cats(array) {
   class Cat {
     constructor(name, age) {
-      this.name = name
-      this.age = age
+      this.name = name;
+      this.age = age;
     }
   }
   for (let i = 0; i < array.length; i++) {
