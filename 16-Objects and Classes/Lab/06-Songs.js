@@ -17,8 +17,8 @@ function songs(array) {
   if (songType === 'all') {
     songs.forEach((i) => console.log(i.name));
   } else {
-    let filteredSongs = songs.filter((i) => i.type === songType);
-    filteredSongs.forEach((i) => console.log(i.name));
+    let filteredSongs = songs.filter(i => i.type === songType);
+    filteredSongs.forEach(i => console.log(i.name));
   }
 }
 songs([3, 'favourite_DownTown_3:14', 'favourite_Kiss_4:16', 'favourite_Smooth Criminal_4:01', 'favourite']);

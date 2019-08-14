@@ -6,8 +6,8 @@ function cats(array) {
     }
   }
   for (let i = 0; i < array.length; i++) {
-    let newCat = new Cat(array[i].split(' ')[0], array[i].split(' ')[1]);
-    console.log(`${newCat.name}, age ${newCat.age} says Meow`);
+    let cat = new Cat(array[i].split(' ')[0], array[i].split(' ')[1]);
+    console.log(`${cat.name}, age ${cat.age} says Meow`);
   }
 }
 cats(['Mellow 2', 'Tom 5']);
