@@ -1,11 +1,11 @@
 function neighborhoods(array) {
   let neighborhoodMap = new Map();
-  let neighborhoods = array.shift().split(", ");
+  let neighborhoods = array.shift().split(', ');
   for (const neighborhood of neighborhoods) {
     neighborhoodMap.set(neighborhood, []);
   }
   array.forEach(element => {
-    let [neighborhood, person] = element.split(" - ");
+    let [neighborhood, person] = element.split(' - ');
     if (neighborhoods.includes(neighborhood)) {
       neighborhoodMap.get(neighborhood).push(person);
     }
@@ -23,13 +23,13 @@ function neighborhoods(array) {
   }
 }
 neighborhoods([
-  "Abbey Street, Herald Street, Bright Mews",
+  'Abbey Street, Herald Street, Bright Mews',
 
-  "Bright Mews - Garry",
+  'Bright Mews - Garry',
 
-  "Bright Mews - Andrea",
+  'Bright Mews - Andrea',
 
-  "Invalid Street - Tommy",
+  'Invalid Street - Tommy',
 
-  "Abbey Street - Billy"
+  'Abbey Street - Billy'
 ]);
