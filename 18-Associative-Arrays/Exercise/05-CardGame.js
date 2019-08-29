@@ -36,10 +36,10 @@ function cardGame(array) {
     }
   });
   for (let name in players) {
-    let deck = players[name];
+    const deck = players[name];
     let sum = 0;
-    for (let card of deck) {
-      let tokens = card.split('');
+    for (const card of deck) {
+      const tokens = card.split('');
       if (tokens.length === 2) {
         sum += calculateSum(tokens[0], tokens[1]);
       } else if (tokens.length === 3) {
@@ -49,8 +49,8 @@ function cardGame(array) {
     console.log(`${name}: ${sum}`);
   }
   function calculateSum(power, type) {
-    let cardPower = cardPowers[power];
-    let cardType = cardTypes[type];
+    const cardPower = cardPowers[power];
+    const cardType = cardTypes[type];
     return cardPower * cardType;
   }
 }
