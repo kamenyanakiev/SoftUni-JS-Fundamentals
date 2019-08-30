@@ -1,0 +1,4 @@
+function partyTime(array) {
+  
+}
+partyTime();

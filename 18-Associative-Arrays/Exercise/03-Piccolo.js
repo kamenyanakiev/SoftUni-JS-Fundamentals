@@ -1,0 +1,4 @@
+function piccolo(array) {
+  
+}
+piccolo();
