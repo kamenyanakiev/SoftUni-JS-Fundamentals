@@ -1,0 +1,1 @@
+https://softuni.bg/trainings/resources/officedocument/41889/lab-problem-descriptions-js-fundamentals-may-2019/2343
