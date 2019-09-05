@@ -1,5 +1,5 @@
 function matchDates(string) {
-  let dateValidator = /\b(?<day>\d{2})([-.\/])(?<month>[A-Z][a-z]{2})\2(?<year>\d{4})\b/g;
+  const dateValidator = /\b(?<day>\d{2})([-.\/])(?<month>[A-Z][a-z]{2})\2(?<year>\d{4})\b/g;
   let validDate = null;
   while ((validDate = dateValidator.exec(string)) !== null) {
     const day = validDate.groups['day'];
