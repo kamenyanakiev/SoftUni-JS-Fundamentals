@@ -1,5 +1,5 @@
 function concert(array) {
-  let bands = new Map();
+  let bands = {};
   const printMembers = array.pop();
   for (let i = 0; i < array.length; i++) {
     if (array[i] === 'start of concert') {
@@ -14,23 +14,25 @@ function concert(array) {
       addMembers(band, members);
     }
   }
+  console.table(bands)
 
   function addMembers(band, members) {
-    if (!bands.has(band)) {
-      bands.set(band, {
-        members: new Set(members)
-      });
+    if (bands.hasOwnProperty(band)) {
+      let currentMembers = bands[band][members];
+      let newMembers = new Set(currentMembers, members);
+      bands[band] = newMembers;
     } else {
-      const currentMembers = [...bands.get(band).members];
-      const newMembers = [...currentMembers, ...members];
-      bands.set(band, {
-        members: new Set(newMembers)
-      });
+      bands[band] = members;
     }
+    
   }
 
   function addSongTime(band, songTime) {
- 
+    if (bands.hasOwnProperty(band)) {
+
+    } else {
+      bands.band.playTime = songTime;
+    }
   }
 }
   concert(['Play; The Beatles; 2584',
