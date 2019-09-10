@@ -18,8 +18,8 @@ function choreWars(array) {
       houseCleaningTime += calculateTime(houseCleaningRegex[0]);
     } else if (laundryRegex) {
       laundryTime += calculateTime(laundryRegex[0]);
-    } 
-  }
+    };
+  };
   console.log(`Doing the dishes - ${dishesTime} min.`);
   console.log(`Cleaning the house - ${houseCleaningTime} min.`);
   console.log(`Doing the laundry - ${laundryTime} min.`);
