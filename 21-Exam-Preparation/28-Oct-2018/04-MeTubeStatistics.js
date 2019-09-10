@@ -33,26 +33,26 @@ function meTubeStatistics(array) {
         views: Number(views),
         likes: 0
       };
-    };
+    }
   }
 
   function likeVideo(video) {
     if (videos.hasOwnProperty(video)) {
       videos[video].likes++;
-    };
+    }
   }
 
   function dislikeVideo(video) {
     if (videos.hasOwnProperty(video)) {
       videos[video].likes--;
-    };
+    }
   }
 
   function sortVideos(a, b) {
     if (sortType === 'by likes') {
       return b.likes - a.likes;
     } else if (sortType === 'by views') {
-      return b.views - a.views
+      return b.views - a.views;
     }
   }
 }
