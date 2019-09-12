@@ -4,7 +4,6 @@ function santasSecretHelper(array) {
   const validNameChecker = /(?<=\@)[A-Z][a-z]+/; // Checks for a name after @
   const goodChecker = /(?<=\!)[G]/; // Checks if there is a !G
   let decodedArray = [];
-  let goodNames = []; 
   array.forEach(line => {
     let decodedString = '';
     for (let i = 0; i < line.length; i++) {
@@ -15,6 +14,7 @@ function santasSecretHelper(array) {
     }
     decodedArray.push(decodedString);
   });
+  let goodNames = [];
   for (const line of decodedArray) {
     let validString = validStringChecker.exec(line);
     if (validString) {
