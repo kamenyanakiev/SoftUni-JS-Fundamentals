@@ -4,29 +4,52 @@ function theIsleOfManTtRace(array) {
   const percentChecker = /(?<percent>\%[A-Za-z]+\%)=(?<digits>\d+)!!(?<coordinates>.+)/;
   const starChecker = /(?<star>\*[A-Za-z]+\*)=(?<digits>\d+)!!(?<coordinates>.+)/;
   const andChecker = /(?<and>\&[A-Za-z]+\&)=(?<digits>\d+)!!(?<coordinates>.+)/;
+  const nameAndCoordinatesChecker = /(?<name>[A-Za-z]+)[\#|\$|\*|\%|\&]=(?<digits>\d+)!!(?<coordinates>.+)/;
   array.forEach(element => {
-  
-    console.log(isValid(element))
+    if (isValid(element)) {
+      let result = nameAndCoordinatesChecker.exec(element);
+      let resultName = result.groups.name;
+      let resultCoordinates = result.groups.coordinates;
+      let decriptedCoordinates = decriptCoordinates(resultCoordinates, result.groups.digits);
+      console.log(`Coordinates found! ${resultName} -> ${decriptedCoordinates}`)
+    } else {
+      console.log('Nothing found!');
+    };
   });
+  
   function isValid(string) {
+    let result = 0;
     if (hashChecker.test(string)) {
-      console.log(string.groups.digits);
-      
-      return true;
+      result = hashChecker.exec(string);
     } else if (dollarChecker.test(string)) {
-      return true;
+      result = dollarChecker.exec(string);
     } else if (percentChecker.test(string)) {
-      return true;
+      result = percentChecker.exec(string);
     } else if (starChecker.test(string)) {
-      return true;
+      result = starChecker.exec(string);
     } else if (andChecker.test(string)){
-      return true;
+      result = andChecker.exec(string);
     } else {
       return false;
     }
+    if (Number(result.groups.digits) === result.groups.coordinates.length) {
+      return true;
+    } else {
+      return false;
+    };
   }
-  //(?=[#&$%*])[A-Za-z]+(?<=[#&$%*])
-  //(?=\#)[A-Za-z]+(?<=\#)
+
+  function decriptCoordinates(resultCoordinates, digits) {
+    let decripted = '';
+    const decoder = Number(digits);
+    for (let i = 0; i < resultCoordinates.length; i++) {
+      let charCode = resultCoordinates[i].charCodeAt();
+      charCode += decoder;
+      let decodedChar = String.fromCharCode(charCode);
+      decripted += decodedChar;
+    }
+    return decripted;
+  }
 }
 theIsleOfManTtRace([
   '%GiacomoAgostini%=7!!hbqw',
