@@ -1,0 +1,1 @@
+https://softuni.bg/trainings/resources/officedocument/42845/more-exercise-js-fundamentals-september-2019/2441
