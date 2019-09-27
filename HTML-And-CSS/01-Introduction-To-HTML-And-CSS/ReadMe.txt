@@ -1,1 +1,0 @@
-https://judge.softuni.bg/Contests/Compete/Index/1136#0
