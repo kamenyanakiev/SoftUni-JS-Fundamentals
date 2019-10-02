@@ -1,4 +1,4 @@
-function numberToText(number) {
+function digitsToText(number) {
   let numbers = {
       'zero': 0,
       'one': 1,
