@@ -20,52 +20,63 @@ function ladybugs(array) {
     console.log(ladybugArray.join(' '));
 
     function moveLadybug(currentIndex, direction, flyLength) {
-        let ladybugCanFly = true;
+        let newIndex = 0;
         if (direction === 'left') {
-            if (currentIndex - flyLength < 0) {
+            newIndex = currentIndex - flyLength;
+            if (newIndex < 0) {
                 ladybugArray[currentIndex] = 0;
-            } else if (ladybugArray[currentIndex - flyLength] === 1) {
-                checkIfOccupied(direction, flyLength, currentIndex);
+            } else if (ladybugArray[newIndex] === 1) {
+                checkIfOccupied(direction, flyLength, currentIndex, newIndex);
+                if (newIndex < 0) {
+                    ladybugArray[currentIndex] = 0;
+                } else {
+                    ladybugArray[newIndex] = 1;
+                    ladybugArray[currentIndex] = 0;
+                }
             }
         } else if (direction === 'right') {
-            if (currentIndex + flyLength > arrayLength - 1) {
+            newIndex = currentIndex + flyLength;
+            if (newIndex > arrayLength - 1) {
                 ladybugArray[currentIndex] = 0;
-            } else if (ladybugArray[currentIndex + flyLength] === 1) {
-                checkIfOccupied(direction, flyLength, currentIndex);
+            } else if (ladybugArray[newIndex] === 1) {
+                checkIfOccupied(direction, flyLength, currentIndex, newIndex);
+                if (newIndex > arrayLength - 1) {
+                    ladybugArray[currentIndex] = 0;
+                } else {
+                    ladybugArray[newIndex] = 1;
+                    ladybugArray[currentIndex] = 0;
+                }
             }
         }
     }
-    function checkIfOccupied(direction, flyLength, currentIndex) {
+
+    function checkIfOccupied(direction, flyLength, currentIndex, newIndex) {
+        let ladybugCanFly = true;
+        let fliesAway = false;
         if (direction === 'left') {
-            if (currentIndex - flyLength < 0) {
-                ladybugArray[currentIndex] = 0;
-            } else if (ladybugArray[currentIndex - flyLength] === 1) {
-                flyLength++;
+            if (ladybugArray[newIndex] === 1) {
+                newIndex--;
                 ladybugCanFly = false;
             } else {
                 ladybugCanFly = true;
+            }
+            if (newIndex < 0) {
+                fliesAway = true;
             }
         } else if (direction === 'right') {
-            if (flyLength + currentIndex > arrayLength - 1) {
-                ladybugArray[currentIndex] = 0;
-            } else if (ladybugArray[currentIndex + flyLength] === 1) {
-                flyLength++;
+            if (ladybugArray[newIndex] === 1) {
+                newIndex++;
                 ladybugCanFly = false;
             } else {
                 ladybugCanFly = true;
             }
-        }
-        if (!ladybugCanFly && ladybugArray[currentIndex] === 1) {
-            checkIfOccupied(direction, flyLength, currentIndex);
-        } else if (ladybugCanFly && ladybugArray[currentIndex] === 1) {
-            if (direction === 'left') {
-                ladybugArray[currentIndex - flyLength] = 1;
-                ladybugArray[currentIndex] = 0;
-            } else if (direction === 'right') {
-                ladybugArray[currentIndex + flyLength] = 1;
-                ladybugArray[currentIndex] = 0;
+            if (newIndex > arrayLength - 1) {
+                fliesAway = true;
             }
+        }
+        if (!ladybugCanFly && !fliesAway) {
+            checkIfOccupied(direction, flyLength, currentIndex, newIndex);
         }
     }
 }
-ladybugs([ 5, '3', '3 left 2', '1 left -2']);
+ladybugs([3, '0 1 2', '0 right 1', '1 right 1', '2 right 1']);
