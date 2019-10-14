@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    First Name: <input type="text" name="First Name" id="userFirstName"> <br>
+    Last Name: <input type="text" name="Last Name" id="userLastName"> <br>
+    Gender:
+    <input type="checkbox" name="male" id="userGenderMale">
+    <input type="checkbox" name="female" id="userGenderFemale"> <br>
+    Email: <input type="text" name="Email" id="userEmail"> <br>
+    Password: <input type="password" name="Password" id="userPassword"> <br>
+  </form>
+  <input type="submit" onclick="validate()">
+  <div id="errors"></div>
+  <script>
+    function validate() {
+      let notification = document.getElementById("errors");
+      notification.innerHTML= "";
+      let isValid = true;
+      let firstName = document.getElementById("userFirstName").value;
+      let lastName = document.getElementById("userLastName").value;
+      let male = document.getElementById("userGenderMale");
+      let female = document.getElementById("userGenderFemale");
+      let email = document.getElementById("userEmail").value;
+      let password = document.getElementById("userPassword").value;
+      if (firstName.length <= 2) {
+        let error = document.createElement("p");
+        error.innerText = "Name must be at least three letters.";
+        error.style.color = "black";
+        notification.appendChild(error);
+        isValid = false;
+      }
+      if (lastName.length <= 2) {
+        let error = document.createElement("p");
+        error.innerText = "Last name must be at least three letters.";
+        error.style.color = "black";
+        notification.appendChild(error);
+        isValid = false;
+      }
+      if ((male.checked && female.checked) || (!male.checked && !female.checked) ) {
+        let error = document.createElement("p");
+        error.innerText = "Invalid gender.";
+        error.style.color = "black";
+        notification.appendChild(error);
+        isValid = false;
+      }
+      if (!email.includes("@") || !email.includes(".")) {
+        let error = document.createElement("p");
+        error.innerText = "Invalid email.";
+        error.style.color = "black";
+        notification.appendChild(error);
+        isValid = false;
+      }
+      if (password.length < 6) {
+        let error = document.createElement("p");
+        error.innerText = "Password must be at least 6 syumbols.";
+        error.style.color = "black";
+        notification.appendChild(error);
+        isValid = false;
+      }
+      if (isValid) {
+        let success = document.createElement("p");
+        success.innerText = "Success!";
+        success.style.backgroundColor = "green";
+        success.style.fontSize = "30";
+        success.style.color = "white";
+        notification.appendChild(success);
+      }
+    }
+  </script>
+</body>
+</html>
