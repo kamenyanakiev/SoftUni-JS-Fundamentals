@@ -1,0 +1,1 @@
+https://softuni.bg/trainings/resources/officedocument/40836/lab-arrays-advanced-js-fundamentals-may-2019/2343
