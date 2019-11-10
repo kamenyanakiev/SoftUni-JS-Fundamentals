@@ -10,7 +10,7 @@ function companyUsers(array) {
         }
     });
     let orderedCompanies = {};
-    
+
     orderCompanies(companies);
     printOrderedCompanies(orderedCompanies);
 
@@ -25,7 +25,6 @@ function companyUsers(array) {
             console.log(property);
             orderedCompanies[property].forEach(element => {
                 console.log(`-- ${element}`);
-                
             });
         }
     }
