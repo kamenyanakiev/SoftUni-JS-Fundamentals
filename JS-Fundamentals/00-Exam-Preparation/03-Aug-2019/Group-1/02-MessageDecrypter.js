@@ -1,22 +1,36 @@
 function messageDecypher(array) {
     array.shift();
-    let firstChecker = /(^\$[A-Z]{1}[a-z]+\$: \[[0-9]+\]\|\[[0-9]+\]\|\[[0-9]+\]\|$)/;
-    let secondChecker = /(^\%[A-Z]{1}[a-z]+\%: \[[0-9]+\]\|\[[0-9]+\]\|\[[0-9]+\]\|$)/;
-    let numsDecrypher = /\[[0-9]+\]\|/;
+    let firstChecker = /(^\$[A-Z]{1}[a-z]{2,}\$: \[[0-9]+\]\|\[[0-9]+\]\|\[[0-9]+\]\|$)/;
+    let secondChecker = /(^\%[A-Z]{1}[a-z]{2,}\%: \[[0-9]+\]\|\[[0-9]+\]\|\[[0-9]+\]\|$)/;
     array.forEach(element => {
         if (element.match(firstChecker)) {
-            let [empty, name, nums] = element.split('$');
-            console.log(nums.split(numsDecrypher));
-            
-            console.log(name);
+            let [empty, type, numString] = element.split('$');
+            printResult(type, numString);
+
         } else if (element.match(secondChecker)) {
-            let [empty, name, nums] = element.split('%');
-            console.log(element);
+            let [empty, type, numString] = element.split('%');
+            printResult(type, numString)
         } else {
             console.log('Valid message not found!');
         }
     });
+
+    function printResult(type, numString) {
+        let nums = numString.split(':')[1].split('|');
+        let result = '';
+        nums.forEach(number => {
+            number  = number.replace(/\s/g, '');
+            let splitNum = number.split('');
+            splitNum.shift();
+            splitNum.pop();
+            splitNum = splitNum.join('');
+            let char = String.fromCharCode(Number(splitNum));
+            result += char;
+        });
+        console.log(`${type}: ${result}`);
+    }
 }
+
 messageDecypher([
     '4',
     '$Request$: [73]|[115]|[105]|',
